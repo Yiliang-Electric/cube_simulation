@@ -21,6 +21,7 @@ class cube:
         else:
             return False
 
+    #first time run, create calibration config with chess board
     def calibrate(self,img):
         img = cv2.resize(img, (1920, 1080), interpolation=cv2.INTER_AREA)
         cv2.imshow('calibrate',img)
@@ -79,6 +80,7 @@ class cube:
                 list.append(rec[3][0]+x_v1*i+(rec[2][0] + x_v2*i -rec[3][0]-x_v1*i)/5*j)
         return np.array(list,np.float32)
 
+    #polygon to conrner
     def mask_corner(self,contour1):
         image = np.zeros([1080,1920,3],dtype=np.uint8)
         image.fill(255)
@@ -93,6 +95,7 @@ class cube:
         approx = cv2.approxPolyDP(contour, 0.05 * perimeter, True)
         return approx    
 
+    #transform corner to function need
     def set_original_quadrilateral(self,corner):
         #1--4
         #|  |
