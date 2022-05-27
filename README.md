@@ -8,8 +8,7 @@ And if u change camera, u need run it again.
 cube_main.py:
 step 1:
 Setting the object's quadrilateral corners with "set_original_quadrilateral(corner)".
-Corner's order----1---4
-                  |   |
-                  2---3
+Corner's order:
+corners = [lefttop,leftbottom,rightbottom,righttop]
 step 2:
 Calling function "show(image,corner)", it will return drawing cube with image data.
