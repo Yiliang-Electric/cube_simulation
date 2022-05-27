@@ -12,7 +12,7 @@ def write_config_data(config, config_path):
     with open(config_path, 'w') as configfile:    # save
         config.write(configfile)
 
-config_path = "config.cfg"
-config = get_config_data(config_path)
-config["program"]['bag_material'] = 'bag_material'
-write_config_data(config, config_path)
+# config_path = "config.cfg"
+# config = get_config_data(config_path)
+# config["program"]['bag_material'] = 'bag_material'
+# write_config_data(config, config_path)
