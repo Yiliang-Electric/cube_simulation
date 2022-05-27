@@ -1,7 +1,8 @@
 import cv2
 import numpy as np
+import configparser
 
-class cube:
+class c:
     def __init__(self) -> None:
         pass
 
@@ -20,7 +21,7 @@ class cube:
             return False
 
     #first time run, create calibration config with chess board
-    def calibrate(self,img,size=30):
+    def calibrate(self,img,file,size=30):
         img = cv2.resize(img, (1920, 1080), interpolation=cv2.INTER_AREA)
         cv2.imshow('calibrate',img)
         cv2.waitKey(1)
@@ -33,9 +34,21 @@ class cube:
 
         im_shape=(1920, 1080)
         __, mtx, dist, __, __ = cv2.calibrateCamera(objpoints, imagepoints,im_shape,None,None)
+        # self.write_config(mtx,dist)
+        np.savez(file,mtx=mtx,dist=dist)
+        return True
 
-        np.savez('camera_matrix',mtx=mtx,dist=dist)
+    # def write_config(self,mtx,dis):
+    #     config = configparser.ConfigParser()
+    #     config['mtx'] = {}
+    #     for i in range(len(mtx)):
+    #         config['mtx'][str(i)] = str(mtx[i])
+    #     config['dis'] = {}
+    #     for i in range(len(dis)):
+    #         config['dis'][str(i)] = str(dis[i])
+    #     with open ('calibration.ini','w') as configfile:
+    #         config.write(configfile)
     
-# c = cube()
+# cc = c()
 # img = cv2.imread('1.jpg')
-# c.calibrate(img)
+# cc.calibrate(img)
